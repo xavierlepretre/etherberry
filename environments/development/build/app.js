@@ -5724,7 +5724,6 @@ window.onload = function() {
 
 
 // Deployed share issuers
-
 var shareIssuerAddresses = {
 	// This one is updated with the default deployed
 	kaserFactory: "",
@@ -5739,12 +5738,51 @@ var shareIssuers = {
 	baguetteShop: undefined
 }
 
+// Share Issue Owners
+var shareIssuerOwners = {
+	"kaserFactory": {
+		"name": "Cheese Maker",
+		"address": "" // Populated on load
+	},
+	"relox": {
+		"name": "Clock Maker",
+		"address": "" // Populated on load
+	},
+	"baguetteShop": {
+		"name": "Bread Maker",
+		"address": "" // Populated on load
+	}
+}
+
 window.onload = function () {
 	web3.eth.getAccounts(function (err, accs) {
 		shareIssuerAddresses.kaserFactory = ShareIssuer.deployed().address;
+		
 		shareIssuers.kaserFactory = ShareIssuer.deployed();
 		shareIssuers.relox = ShareIssuer.at(shareIssuerAddresses.relox);
 		shareIssuers.baguetteShop = ShareIssuer.at(shareIssuerAddresses.baguetteShop);
+
+		shareIssuers.kaserFactory.getOwner()
+			.then(function (address) {
+				shareIssuerOwners.kaserFactory.address = address;		
+			})
+			.catch(function (e) {
+				console.error(e);
+			});
+		shareIssuers.relox.getOwner()
+			.then(function (address) {
+				shareIssuerOwners.relox.address = address;		
+			})
+			.catch(function (e) {
+				console.error(e);
+			});
+		shareIssuers.baguetteShop.getOwner()
+			.then(function (address) {
+				shareIssuerOwners.baguetteShop.address = address;		
+			})
+			.catch(function (e) {
+				console.error(e);
+			});
 	});
 }
 
