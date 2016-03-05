@@ -1,22 +1,22 @@
 # etherberry
 
 ## Data structures.
-### Known Share Issuers:
+### Known `ShareIssuer` instances:
 There is a global variable that keeps track of all known instances of `ShareIssuer`.
 The addresses need to be changed and rebuilt when the `ShareIssuer` contract is modified and redeployed.
 ```Javascript
 var shareIssuerAddresses = {
 	// This one is updated with the default deployed
-	kaserFactory: _POPULATED_ON_LOAD_,
+	"kaserFactory": _POPULATED_ON_LOAD_,
 	// These need to be updated by hand unfortunately
-	relox: "0x3e3067623f0a8919382924dd9a57eaff19e2d3e0",
-	baguetteShop: "0x332e4376f2660ee168103b51a92b43c779a2cfdd"
+	"relox": "0x3e3067623f0a8919382924dd9a57eaff19e2d3e0",
+	"baguetteShop": "0x332e4376f2660ee168103b51a92b43c779a2cfdd"
 };
 
 var shareIssuers = {
-	kaserFactory: _POPULATED_ON_LOAD_,
-	relox: _POPULATED_ON_LOAD_,
-	baguetteShop: _POPULATED_ON_LOAD_
+	"kaserFactory": _POPULATED_ON_LOAD_,
+	"relox": _POPULATED_ON_LOAD_,
+	"baguetteShop": _POPULATED_ON_LOAD_
 };
 ```
 
@@ -25,17 +25,17 @@ There is a global variable that keeps track of all known owners of `ShareIssuer`
 The address values are populated asynchronously on load.
 ```Javascript
 var shareIssuerOwners = {
-	kaserFactory: {
-		name: "Cheese Maker", 
-		address: _POPULATED_ON_LOAD_
+	"kaserFactory": {
+		"name": "Cheese Maker", 
+		"address": _POPULATED_ON_LOAD_
 	}, 
-	relox: {
-		name: "Clock Maker", 
-		address: _POPULATED_ON_LOAD_
+	"relox": {
+		"name": "Clock Maker", 
+		"address": _POPULATED_ON_LOAD_
 	}, 
-	baguetteShop: {
-		name: "Bread Maker", 
-		address: _POPULATED_ON_LOAD_
+	"baguetteShop": {
+		"name": "Bread Maker", 
+		"address": _POPULATED_ON_LOAD_
 	}
 };
 ```
@@ -109,6 +109,20 @@ shareIssuer.getShareHolderInfos(
 	});
 ```
 
+#### Get the authorised settler.
+```Javascript
+var shareIssuer = shareIssuers.relox; // For instance
+shareIssuer.getAuthorisedSettler()
+	.then(function (result) {
+		// result comes in the form of "0x3e3067623f0a8919382924dd9a57eaff19e2d3e0"
+		// or "0x0000000000000000000000000000000000000000" is no registered settler.
+		console.log(result);
+	})
+	.catch(function (e) {
+		console.error(e);
+	});
+```
+
 #### Register an authorised settler.
 ```Javascript
 var owner = "0x9a47182e9a133b449a05d1b95fa678ad9478fcf0";
@@ -123,6 +137,25 @@ shareIssuer.registerAuthorisedSettler("0x9a47182e9a133b449a05d1b95fa678ad9478fcf
 	.catch(function (e) {
 		console.log(e);
 	});
+```
+
+#### Listen to the `OnAuthorisedSettlerChanged` event.
+```Javascript
+var shareIssuer = shareIssuers.relox; // For instance
+shareIssuer.OnAuthorisedSettlerChanged({})
+    .watch(function(error, result) {
+      console.log("OnAuthorisedSettlerChanged:");
+      if (error) {
+        console.error(error);
+      }
+      // example result = {
+      //   "args": {
+      //     "newAuthorisedSettler": "0x9a47182e9a133b449a05d1b95fa678ad9478fcf0",
+      //     ...
+  	  //   }
+  	  // }
+      console.log(result);
+    });
 ```
 
 #### Transfer shares. 
