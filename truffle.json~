@@ -3,7 +3,7 @@
     "index.html": "index.html",
     "authorisedsettler.html": "authorisedsettler.html",
     "orderbook-html": "orderbook.html",
-    "orderbook.json" : "orderbook.json",
+    "orderbook.json" 
     "app.js": [
       "javascripts/app.js",
       "javascripts/shareHolderMethods.js",
