@@ -3,8 +3,11 @@ contract Owned {
     owner = msg.sender;
   }
 
-  modifier onlyowner() {
-    if (msg.sender == owner) _
+  modifier fromOwner() {
+    if (msg.sender != owner) {
+      throw;
+    }
+    _
   }
 
   address owner;

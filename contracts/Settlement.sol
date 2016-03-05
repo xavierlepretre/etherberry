@@ -61,7 +61,7 @@ contract Settlement is Owned {
 	function confirmPayment(uint256 tradeId)
 		fromOwner() 
 		tradeIdExists(tradeId) {
-		ShareIssuer(trades[tradeId].shareIssuer).transferSharesTo(
+		ShareIssuer(trades[tradeId].shareIssuer).transferShares(
 			trades[tradeId].to,
 			trades[tradeId].from,
 			trades[tradeId].quantity);
