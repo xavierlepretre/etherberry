@@ -5843,7 +5843,9 @@ function getShareHolderInfos(shareIssuer, resultFunction, errorFunction) {
 		}
 	})
 	.catch(errorFunction);
-};
+}
+
+;
 
 // Added by Truffle bootstrap.
 // Supports Mist, and other wallets that provide 'web3'.
@@ -5856,4 +5858,4 @@ if (typeof web3 !== 'undefined') {
 }
 
 Pudding.setWeb3(window.web3);
-Pudding.load([OrderBook, MetaCoin, Owned, Settlement, ShareIssuer], window);
+Pudding.load([MetaCoin, Owned, Settlement, OrderBook, ShareIssuer], window);

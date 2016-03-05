@@ -48,3 +48,12 @@ h3 {
 #balance {
   color: black;
 }
+
+table, td, th {
+  border: 1px black solid;
+  border-spacing: 0px;
+}
+
+input[type="radio"], label[for] {
+  display: inline-block;
+}
