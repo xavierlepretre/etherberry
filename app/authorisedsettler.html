@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Authorised Settler Page</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="./app.css" rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <h1>Transfer of Share Ownership</h1>
+  <h2>I am an Authorised Settler</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Share Issuer</th>
+        <th>Shareholder</th>
+        <th>Holding</th>
+        <th>Buyer</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody id="share-issuers">
+      <tr class="share-issuer" data-issuer-address="0x2534545645">
+        <th class="share-issuer-name">Relox</th>
+        <td class="shareholders">
+          <form>
+            <div class="shareholder" data-shareholder-id="0x23434534">
+              <input id="shareholder-radio-0" type="radio" 
+                name="data-shareholder-id" value="0x23434534"/>
+              <label for="shareholder-radio-0">0x23434534</label>
+            </div>
+            <div class="shareholder" data-shareholder-id="0xabcdef">
+              <input id="shareholder-radio-1" type="radio" 
+                name="data-shareholder-id" value="0xabcdef" />
+              <label for="shareholder-radio-1">0xabcdef</label>
+            </div>
+          </form>
+        </td>
+        <td class="shareholdings">
+          <div class="shareholding" data-shareholder-id="0x23434534">90</div>
+          <div class="shareholding" data-shareholder-id="0xabcdef">10</div>
+        </td>
+        <td class="buyer">
+          <input type="text" name="buyer" placeholder="0x4327289347298"/>
+        </td>
+        <td class="count">
+          <input type="number" name="count" />
+          <button>Transfer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
