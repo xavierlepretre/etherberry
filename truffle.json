@@ -2,11 +2,13 @@
   "build": {
     "index.html": "index.html",
     "authorisedsettler.html": "authorisedsettler.html",
+    "share-issuer.html" : "share-issuer.html",
     "app.js": [
       "javascripts/app.js",
       "javascripts/shareHolderMethods.js",
       "javascripts/authorisedSettlerMethods.js"
     ],
+    "shareIssuerMethods.js"
     "app.css": [
       "stylesheets/app.css"
     ],
