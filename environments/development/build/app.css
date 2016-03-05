@@ -57,3 +57,9 @@ table, td, th {
 input[type="radio"], label[for] {
   display: inline-block;
 }
+
+table#title {
+    background-color: lightgrey;
+
+}
+
