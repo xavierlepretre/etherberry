@@ -9,15 +9,28 @@
 </head>
 <body>
   <h1>I am ShareIssuer Owner</h1>
-  <h2></h2>
-<!--div ng-app="myApp" ng-controller="customersCtrl">
-<table border="1">
-<tr ng-repeat="x in names">
-<td>{{x.ShopName}}</td>
-<td>{{x.CurrentSettler}}</td>
-<td>{{x.Action}}</td></tr>
+  <h2><span> Authorized Settler</span> </h2>
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.ShopName }}</td>
+    <td>{{ x.CurrentSettler}}</td>
+    <td>{{ x.Action}}</td>
+  </tr>
 </table>
-</div-->
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope) {
+    $scope.names = [
+      { "ShopName" : "Relox", "CurrentSettler" : "0x00", "Action" : "Button here" }];
+});
+</script>
+
 
 
 </body>

@@ -8,7 +8,11 @@
       "javascripts/shareHolderMethods.js",
       "javascripts/authorisedSettlerMethods.js"
     ],
-    "shareIssuerMethods.js"
+    "shareIssuerMethods.js": [
+      "javascripts/app.js",
+      "javascripts/shareHolderMethods.js",
+       "javascripts/shareIssuerMethods.js"
+    ],
     "app.css": [
       "stylesheets/app.css"
     ],
