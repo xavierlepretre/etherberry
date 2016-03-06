@@ -3,6 +3,8 @@
     "index.html": "index.html",
     "authorisedsettler.html": "authorisedsettler.html",
     "share-issuer.html" : "share-issuer.html",
+    "orderbook-html": "orderbook.html",
+    "orderbook.json" : "orderbook.json",
     "app.js": [
       "javascripts/app.js",
       "javascripts/shareHolderMethods.js",
@@ -13,8 +15,13 @@
       "javascripts/shareHolderMethods.js",
        "javascripts/shareIssuerMethods.js"
     ],
+    "orderbook.js": [
+      "javascripts/mainApp.js",
+      "javascripts/orderbookCtrl.js"
+    ],
     "app.css": [
-      "stylesheets/app.css"
+      "stylesheets/app.css",
+      "stylesheets/book.css"
     ],
     "images/": "images/"
   },
