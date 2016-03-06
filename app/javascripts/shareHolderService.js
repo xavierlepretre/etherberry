@@ -8,34 +8,48 @@ app.service('shareHolderService', [ function() {
  this.tmpShareIssuers =[
    { name : "kaserFactory",  address : "", instance : undefined, 
      owner : { name : "Cheese Maker", address : "" },
-     shareHolders : [] },
-   { name : "relox",  address : "0x3e3067623f0a8919382924dd9a57eaff19e2d3e0", instance : undefined,
+     shareHolders : [],
+     authorisedSettler: "" },
+   { name : "relox",  address : "", instance : undefined,
      owner : { name : "Clock Maker", address : "" },
-     shareHolders : [] },
-   { name : "baguetteShop", address : "0x332e4376f2660ee168103b51a92b43c779a2cfdd", instance : undefined,
+     shareHolders : [],
+     authorisedSettler: "" },
+   { name : "baguetteShop", address : "", instance : undefined,
      owner : { name : "Cheese Maker", address : "" },
-     shareHolders : [] }
+     shareHolders : [],
+     authorisedSettler: "" }
  ];
 
    var init = function (shareIssuers) {
 	web3.eth.getAccounts(function (err, accs) {
 		shareIssuers[0].address = ShareIssuer.deployed().address;
 		
-                shareIssuers.forEach(function(shareIssuer) {
-                    shareIssuer.instance = ShareIssuer.at(shareIssuer.address);
+        shareIssuers.forEach(function(shareIssuer) {
+            shareIssuer.instance = ShareIssuer.at(shareIssuer.address);
 
-                    getShareHolderInfos(shareIssuer);
+	        getShareHolderInfos(shareIssuer);
 		    shareIssuer.instance.getOwner()
-			.then(function (address) {
-				shareIssuer.owner.address = address;
-			})
-			.catch(function (e) {
-				console.error(e);
-			});
+				.then(function (address) {
+					shareIssuer.owner.address = address;
+				})
+				.catch(function (e) {
+					console.error(e);
+				});
 
-                    console.log(shareIssuer);
+	        console.log(shareIssuer);
 
-                });
+	        shareIssuer.instance.getAuthorisedSettler()
+	        	.then(service.applyCallback(function (address) {
+	        			console.log("second " + address);
+	        			shareIssuer.authorisedSettler = address;
+	        		})
+	        	)
+	        	.catch(console.error);
+
+	    	listenToAuthorisedSettlerChanged(shareIssuer);
+
+        });
+
 	});
    }
 
@@ -71,15 +85,15 @@ function getShareHolderInfos(shareIssuerWrapper) {
 			shareIssuerWrapper.instance
 			.getShareholding(holderList[i])
 			.then(service.applyCallback(function (count) {
-console.log(count);
+				console.log(count);
 				receivedInfos.push(current);
 				shareIssuerWrapper.shareHolders.push({
 					"address": holderList[current],
 					"count": count.c[0]
 				});
-                               if(length == receivedInfos.length) {
-                                   service.shareIssuers = service.tmpShareIssuers;
-                               }
+               	if(length == receivedInfos.length) {
+                   service.shareIssuers = service.tmpShareIssuers;
+               	}
 			}))
 			.catch(function(e) { console.error(e); } );
 		}
@@ -87,6 +101,20 @@ console.log(count);
 	.catch(function(e) { console.error(e); } );
 }
   
+
+function listenToAuthorisedSettlerChanged(shareIssuer) {
+	shareIssuer.instance.OnAuthorisedSettlerChanged({})
+	    .watch(service.applyCallback(function (error, result) {
+	        console.log("OnAuthorisedSettlerChanged:");  
+	        if (error) {
+	            console.log(error);
+	      		alert("Error OnAuthorisedSettlerChanged \n" + e);
+	        }
+	        console.log(result);
+        	shareIssuer.authorisedSettler = result.args.newAuthorisedSettler;	
+        }));
+}
+
   init(this.tmpShareIssuers);
   
 }]);

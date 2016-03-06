@@ -15,9 +15,18 @@
     };
 
     $scope.transferShares = function(shareIssuer, seller, buyer, count) {
-console.log(shareIssuer.instance, seller.address, buyer, count);
-       shareIssuer.instance.transferShares(seller.address, buyer, parseInt(count,10))
-                 .then(function(result) { console.log(result); })
-                 .catch(console.error);
+        console.log(shareIssuer.instance, seller.address, buyer, count);
+        shareIssuer.instance.transferShares(
+            seller.address, 
+            buyer, 
+            parseInt(count, 10),
+            {from: web3.eth.coinbase})
+                .then(function(result) { 
+                    console.log(result); 
+                })
+                .catch(function (e) {
+                    console.error(e);
+                });
     };
+
 } ]); 

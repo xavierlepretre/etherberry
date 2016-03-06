@@ -5399,61 +5399,6 @@ var factory = function factory(Pudding) {
   // the easiest way to extend a Babel-based class. Note that the
   // resulting .js file does not have a dependency on Babel.
 
-  var OrderBook = (function (_Pudding) {
-    _inherits(OrderBook, _Pudding);
-
-    function OrderBook() {
-      _classCallCheck(this, OrderBook);
-
-      _get(Object.getPrototypeOf(OrderBook.prototype), "constructor", this).apply(this, arguments);
-    }
-
-    return OrderBook;
-  })(Pudding);
-
-  ;
-
-  // Set up specific data for this class.
-  OrderBook.abi = [{ "constant": false, "inputs": [{ "name": "orderId", "type": "uint256" }], "name": "removeOrder", "outputs": [], "type": "function" }, { "constant": false, "inputs": [{ "name": "shareIssuer", "type": "address" }, { "name": "price", "type": "uint256" }, { "name": "quantity", "type": "uint256" }, { "name": "isBuy", "type": "bool" }], "name": "addOrder", "outputs": [{ "name": "", "type": "uint256" }], "type": "function" }, { "inputs": [], "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "orderId", "type": "uint256" }, { "indexed": false, "name": "shareIssuer", "type": "address" }, { "indexed": false, "name": "price", "type": "uint256" }, { "indexed": false, "name": "quantity", "type": "uint256" }, { "indexed": false, "name": "isBuy", "type": "bool" }, { "indexed": false, "name": "from", "type": "address" }], "name": "OnOrderAdded", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "orderId", "type": "uint256" }], "name": "OnOrderRemoved", "type": "event" }];
-  OrderBook.binary = "606060405260006002556103a9806100176000396000f3606060405260e060020a60003504639645337a8114610026578063e21c343714610048575b005b610024600435600081815260208190526040812054829081146101e957610002565b610145600435602435604435606435600280546001908101808355600081815260208190526040808220928355835492840192909255835481528181208401805473ffffffffffffffffffffffffffffffffffffffff1916891790558354815281812060030187905583548152818120600401869055835481528181206005908101805460ff19168717905593548152908120909201805474ffffffffffffffffffffffffffffffffffffffff00191633610100021790558054808201808355828183801582901161015757828752610157906000805160206103898339815191529081019083015b808211156101e55760008155600101610131565b60408051918252519081900360200190f35b50505091909060005260206000209001600050600254908190556040805191825273ffffffffffffffffffffffffffffffffffffffff88811660208401528282018890526060830187905260808301869052331660a0830152517f3835a03ffda841180cb5bca237598183ac5d578cd18a805ae2c1b5d3fbeef1eb92509081900360c00190a1949350505050565b5090565b6040805184815290517f6d8187c33ccde9f6fa287a7a6884eb38d6faad13ca9c59e64218160fc115dce49181900360200190a160008381526020819052604090206001805491810154935090600019810190811015610002576000918252600080516020610389833981519152019050546001805484908110156100025760008051602061038983398151915201919091558054839160009182919084908110156100025760008051602061038983398151915201549091526040909120810191909155805460001981018083559091908280158290116102e75760008390526102e790600080516020610389833981519152908101908301610131565b5050506000848152602081815260408083208381556001810184905560028101805473ffffffffffffffffffffffffffffffffffffffff19169055600381018490556004810193909355600592909201805474ffffffffffffffffffffffffffffffffffffffffff19169055815186815291517f6d8187c33ccde9f6fa287a7a6884eb38d6faad13ca9c59e64218160fc115dce49350918290030190a150505056b10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6";
-
-  if ("" != "") {
-    OrderBook.address = "";
-
-    // Backward compatibility; Deprecated.
-    OrderBook.deployed_address = "";
-  }
-
-  OrderBook.generated_with = "1.0.3";
-  OrderBook.contract_name = "OrderBook";
-
-  return OrderBook;
-};
-
-// Nicety for Node.
-factory.load = factory;
-
-if (typeof module != "undefined") {
-  module.exports = factory;
-} else {
-  // There will only be one version of Pudding in the browser,
-  // and we can use that.
-  window.OrderBook = factory;
-};
-
-"use strict";
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var factory = function factory(Pudding) {
-  // Inherit from Pudding. The dependency on Babel sucks, but it's
-  // the easiest way to extend a Babel-based class. Note that the
-  // resulting .js file does not have a dependency on Babel.
-
   var MetaCoin = (function (_Pudding) {
     _inherits(MetaCoin, _Pudding);
 
@@ -5494,6 +5439,61 @@ if (typeof module != "undefined") {
   // There will only be one version of Pudding in the browser,
   // and we can use that.
   window.MetaCoin = factory;
+};
+
+"use strict";
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var factory = function factory(Pudding) {
+  // Inherit from Pudding. The dependency on Babel sucks, but it's
+  // the easiest way to extend a Babel-based class. Note that the
+  // resulting .js file does not have a dependency on Babel.
+
+  var OrderBook = (function (_Pudding) {
+    _inherits(OrderBook, _Pudding);
+
+    function OrderBook() {
+      _classCallCheck(this, OrderBook);
+
+      _get(Object.getPrototypeOf(OrderBook.prototype), "constructor", this).apply(this, arguments);
+    }
+
+    return OrderBook;
+  })(Pudding);
+
+  ;
+
+  // Set up specific data for this class.
+  OrderBook.abi = [{ "constant": false, "inputs": [{ "name": "orderId", "type": "uint256" }], "name": "removeOrder", "outputs": [], "type": "function" }, { "constant": true, "inputs": [], "name": "getOrderIds", "outputs": [{ "name": "", "type": "uint256[]" }], "type": "function" }, { "constant": true, "inputs": [{ "name": "orderId", "type": "uint256" }], "name": "getOrder", "outputs": [{ "name": "", "type": "uint256" }, { "name": "", "type": "address" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }, { "name": "", "type": "bool" }, { "name": "", "type": "address" }], "type": "function" }, { "constant": false, "inputs": [{ "name": "shareIssuer", "type": "address" }, { "name": "price", "type": "uint256" }, { "name": "quantity", "type": "uint256" }, { "name": "isBuy", "type": "bool" }], "name": "addOrder", "outputs": [{ "name": "", "type": "uint256" }], "type": "function" }, { "inputs": [], "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "orderId", "type": "uint256" }, { "indexed": false, "name": "shareIssuer", "type": "address" }, { "indexed": false, "name": "price", "type": "uint256" }, { "indexed": false, "name": "quantity", "type": "uint256" }, { "indexed": false, "name": "isBuy", "type": "bool" }, { "indexed": false, "name": "from", "type": "address" }], "name": "OnOrderAdded", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "orderId", "type": "uint256" }], "name": "OnOrderRemoved", "type": "event" }];
+  OrderBook.binary = "6060604052600060025561051c806100176000396000f3606060405260e060020a60003504639645337a811461003c5780639e0acf8f1461005e578063d09ef241146100c4578063e21c3437146100f0575b005b61003a6004356000818152602081905260408120548290811461030c57610002565b6101ed6040805160208181018352600082526001805484518184028101840190955280855292939290918301828280156100ba57602002820191906000526020600020905b8160005054815260200190600101908083116100a3575b5050505050905090565b61023760043560008181526020819052604081205481908190819081908190879081146104ac57610002565b610275600435602435604435606435600280546001908101808355600081815260208190526040808220928355835492840192909255835481528181208401805473ffffffffffffffffffffffffffffffffffffffff1916891790558354815281812060030187905583548152818120600401869055835481528181206005908101805460ff19168717905593548152908120909201805474ffffffffffffffffffffffffffffffffffffffff00191633610100021790558054808201808355828183801582901161028757828752610287906000805160206104fc8339815191529081019083015b8082111561030857600081556001016101d9565b60405180806020018281038252838181518152602001915080519060200190602002808383829060006004602084601f0104600302600f01f1509050019250505060405180910390f35b60408051968752600160a060020a039586166020880152868101949094526060860192909252608085015290911660a0830152519081900360c00190f35b60408051918252519081900360200190f35b505050919090600052602060002090016000506002549081905560408051918252600160a060020a0388811660208401528282018890526060830187905260808301869052331660a0830152517f3835a03ffda841180cb5bca237598183ac5d578cd18a805ae2c1b5d3fbeef1eb92509081900360c00190a1949350505050565b5090565b6040805184815290517f6d8187c33ccde9f6fa287a7a6884eb38d6faad13ca9c59e64218160fc115dce49181900360200190a1600083815260208190526040902060019081015481549093506000198101908110156100025760009182526000805160206104fc83398151915201905054600180548490811015610002576000805160206104fc8339815191520191909155805483916000918291908490811015610002576000805160206104fc833981519152015490915260409091208101919091558054600019810180835590919082801582901161040a57600083905261040a906000805160206104fc8339815191529081019083016101d9565b5050506000848152602081815260408083208381556001810184905560028101805473ffffffffffffffffffffffffffffffffffffffff19169055600381018490556004810193909355600592909201805474ffffffffffffffffffffffffffffffffffffffffff19169055815186815291517f6d8187c33ccde9f6fa287a7a6884eb38d6faad13ca9c59e64218160fc115dce49350918290030190a1505050565b5050506000948552505050602082905250604090206001810154600282015460038301546004840154600594909401549294600160a060020a03928316949193919260ff8316926101009004169056b10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6";
+
+  if ("0x372af0a4953e91339d78c78d0abcfece33a51017" != "") {
+    OrderBook.address = "0x372af0a4953e91339d78c78d0abcfece33a51017";
+
+    // Backward compatibility; Deprecated.
+    OrderBook.deployed_address = "0x372af0a4953e91339d78c78d0abcfece33a51017";
+  }
+
+  OrderBook.generated_with = "1.0.3";
+  OrderBook.contract_name = "OrderBook";
+
+  return OrderBook;
+};
+
+// Nicety for Node.
+factory.load = factory;
+
+if (typeof module != "undefined") {
+  module.exports = factory;
+} else {
+  // There will only be one version of Pudding in the browser,
+  // and we can use that.
+  window.OrderBook = factory;
 };
 
 "use strict";
@@ -5564,35 +5564,35 @@ var factory = function factory(Pudding) {
   // the easiest way to extend a Babel-based class. Note that the
   // resulting .js file does not have a dependency on Babel.
 
-  var Settlement = (function (_Pudding) {
-    _inherits(Settlement, _Pudding);
+  var PendingTradeList = (function (_Pudding) {
+    _inherits(PendingTradeList, _Pudding);
 
-    function Settlement() {
-      _classCallCheck(this, Settlement);
+    function PendingTradeList() {
+      _classCallCheck(this, PendingTradeList);
 
-      _get(Object.getPrototypeOf(Settlement.prototype), "constructor", this).apply(this, arguments);
+      _get(Object.getPrototypeOf(PendingTradeList.prototype), "constructor", this).apply(this, arguments);
     }
 
-    return Settlement;
+    return PendingTradeList;
   })(Pudding);
 
   ;
 
   // Set up specific data for this class.
-  Settlement.abi = [{ "constant": false, "inputs": [{ "name": "shareIssuer", "type": "address" }, { "name": "price", "type": "uint256" }, { "name": "quantity", "type": "uint256" }, { "name": "from", "type": "address" }, { "name": "to", "type": "address" }], "name": "registerTrade", "outputs": [], "type": "function" }, { "constant": false, "inputs": [{ "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "totalTransfered", "type": "uint256" }], "name": "confirmPayment", "outputs": [], "type": "function" }, { "constant": false, "inputs": [{ "name": "tradeId", "type": "uint256" }], "name": "confirmPayment", "outputs": [], "type": "function" }, { "constant": true, "inputs": [], "name": "getOwner", "outputs": [{ "name": "", "type": "address" }], "type": "function" }, { "inputs": [], "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "tradeId", "type": "uint256" }], "name": "OnTradeRemoved", "type": "event" }];
-  Settlement.binary = "606060405260008054600160a060020a03191633179055600060035561040f806100296000396000f3606060405260e060020a60003504633aa44327811461003c5780634e5ed01714610125578063876ca09f1461014d578063893d20e81461016f575b005b61003a6004356024356044356064356084356003805460019081018083556000818152602083905260408082209283556002805493850193909355845482528082208301805473ffffffffffffffffffffffffffffffffffffffff199081168c179091558554835281832086018a905585548352818320600401899055855483528183206005018054821689179055945482529020600601805490931684179092558154908101808355828183801582901161018f57600083905261018f906000805160206103ef8339815191529081019083015b808211156101a95760008155600101610111565b61003a600435602435604435600054600160a060020a0390811633909116146101ad57610002565b61003a600435600054600160a060020a0390811633909116146101b257610002565b60005460408051600160a060020a03929092168252519081900360200190f35b505050600092835250600354602090922001555050505050565b5090565b505050565b600081815260016020526040902054819081146101ce57610002565b60008281526001602052604080822060028101546006820154600583015460049384015485517fbfc77beb000000000000000000000000000000000000000000000000000000008152600160a060020a039384169581019590955290821660248501526044840152925192169263bfc77beb92606483810193829003018183876161da5a03f115610002575050506101ad8260008181526001602052604081205481908390811461027e57610002565b6000848152600160208190526040909120015460028054919350906000198101908110156100025760009182526000805160206103ef83398151915201905054600280548490811015610002576000805160206103ef833981519152019190915580548391600191600091908490811015610002576000805160206103ef833981519152015482526040909120909101919091558054600019810180835590919082801582901161034c57600083905261034c906000805160206103ef833981519152908101908301610111565b505050600085815260016020818152604080842084815592830184905560028301805473ffffffffffffffffffffffffffffffffffffffff19908116909155600384018590556004840194909455600583018054851690556006929092018054909316909255805187815290517f7fea504afcd66111a1de28703ac39c5f3252f43acd6df8ff5ae14e9e68185e8593509081900390910190a1506001939250505056405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace";
+  PendingTradeList.abi = [{ "constant": true, "inputs": [{ "name": "id", "type": "uint256" }], "name": "getTrade", "outputs": [{ "name": "", "type": "address" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }, { "name": "", "type": "address" }, { "name": "", "type": "address" }], "type": "function" }, { "constant": false, "inputs": [{ "name": "shareIssuer", "type": "address" }, { "name": "price", "type": "uint256" }, { "name": "quantity", "type": "uint256" }, { "name": "from", "type": "address" }, { "name": "to", "type": "address" }], "name": "registerTrade", "outputs": [], "type": "function" }, { "constant": true, "inputs": [], "name": "getTradeIds", "outputs": [{ "name": "", "type": "uint256[]" }], "type": "function" }, { "constant": false, "inputs": [{ "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "totalTransfered", "type": "uint256" }], "name": "confirmPayment", "outputs": [], "type": "function" }, { "constant": false, "inputs": [{ "name": "tradeId", "type": "uint256" }], "name": "confirmPayment", "outputs": [], "type": "function" }, { "constant": true, "inputs": [], "name": "getOwner", "outputs": [{ "name": "", "type": "address" }], "type": "function" }, { "inputs": [], "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "id", "type": "uint256" }, { "indexed": false, "name": "index", "type": "uint256" }, { "indexed": false, "name": "shareIssuer", "type": "address" }, { "indexed": false, "name": "price", "type": "uint256" }, { "indexed": false, "name": "quantity", "type": "uint256" }, { "indexed": false, "name": "from", "type": "address" }, { "indexed": false, "name": "to", "type": "address" }], "name": "OnTradeRegistered", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "tradeId", "type": "uint256" }], "name": "OnTradeRemoved", "type": "event" }];
+  PendingTradeList.binary = "606060405260008054600160a060020a031916331790556000600355610602806100296000396000f3606060405236156100565760e060020a60003504632db25e0581146100585780633aa44327146100825780633b1a2533146101615780634e5ed017146101c6578063876ca09f146101ee578063893d20e814610210575b005b6102236004356000818152600160205260408120548190819081908190869081146102c657610002565b6100566004356024356044356064356084356003805460019081018083556000818152602083905260408082209283556002805493850193909355845482528082208301805473ffffffffffffffffffffffffffffffffffffffff199081168c179091558554835281832086018a905585548352818320600401899055855483528183206005018054821689179055945482529020600601805490931684179092558154908101808355828183801582901161030e5781836000526020600020918201910161030e91905b8082111561039c576000815560010161014d565b6040805160208181018352600082526002805484518184028101840190955280855261025f94928301828280156101ba57602002820191906000526020600020905b8160005054815260200190600101908083116101a3575b50505050509050610220565b610056600435602435604435600054600160a060020a0390811633909116146103a057610002565b610056600435600054600160a060020a0390811633909116146103a557610002565b6102a9600054600160a060020a03165b90565b60408051600160a060020a0396871681526020810195909552848101939093529084166060840152909216608082015290519081900360a00190f35b60405180806020018281038252838181518152602001915080519060200190602002808383829060006004602084601f0104600302600f01f1509050019250505060405180910390f35b60408051600160a060020a03929092168252519081900360200190f35b5050506000938452505060016020525060409020600281015460068201546005830154600484015460039490940154600160a060020a03938416959094939182169290911690565b5050506000928352506020808320600354920182905581835260018082526040938490200154835192835290820152600160a060020a0387811682840152606082018790526080820186905284811660a0830152831660c082015290517f8b384f0b5cb57fd09b48bfc4e2cb61510d10c5453b2d366393fcb61eacfe9c209181900360e00190a15050505050565b5090565b505050565b600081815260016020526040902054819081146103c157610002565b60008281526001602052604080822060028101546006820154600583015460049384015485517fbfc77beb000000000000000000000000000000000000000000000000000000008152600160a060020a039384169581019590955290821660248501526044840152925192169263bfc77beb92606483810193829003018183876161da5a03f115610002575050506103a08260008181526001602052604081205481908390811461047157610002565b6000848152600160208190526040909120015460028054919350906000198101908110156100025760009182526000805160206105e283398151915201905054600280548490811015610002576000805160206105e2833981519152019190915580548391600191600091908490811015610002576000805160206105e2833981519152015482526040909120909101919091558054600019810180835590919082801582901161053f57600083905261053f906000805160206105e283398151915290810190830161014d565b505050600085815260016020818152604080842084815592830184905560028301805473ffffffffffffffffffffffffffffffffffffffff19908116909155600384018590556004840194909455600583018054851690556006929092018054909316909255805187815290517f7fea504afcd66111a1de28703ac39c5f3252f43acd6df8ff5ae14e9e68185e8593509081900390910190a1506001939250505056405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace";
 
-  if ("" != "") {
-    Settlement.address = "";
+  if ("0x5b0a0323f28591709e1f0bb90b6d0837a761579a" != "") {
+    PendingTradeList.address = "0x5b0a0323f28591709e1f0bb90b6d0837a761579a";
 
     // Backward compatibility; Deprecated.
-    Settlement.deployed_address = "";
+    PendingTradeList.deployed_address = "0x5b0a0323f28591709e1f0bb90b6d0837a761579a";
   }
 
-  Settlement.generated_with = "1.0.3";
-  Settlement.contract_name = "Settlement";
+  PendingTradeList.generated_with = "1.0.3";
+  PendingTradeList.contract_name = "PendingTradeList";
 
-  return Settlement;
+  return PendingTradeList;
 };
 
 // Nicety for Node.
@@ -5603,7 +5603,7 @@ if (typeof module != "undefined") {
 } else {
   // There will only be one version of Pudding in the browser,
   // and we can use that.
-  window.Settlement = factory;
+  window.PendingTradeList = factory;
 };
 
 "use strict";
@@ -5637,11 +5637,11 @@ var factory = function factory(Pudding) {
   ShareIssuer.abi = [{ "constant": false, "inputs": [{ "name": "quantity", "type": "uint256" }], "name": "issueShares", "outputs": [], "type": "function" }, { "constant": true, "inputs": [], "name": "getAuthorisedSettler", "outputs": [{ "name": "", "type": "address" }], "type": "function" }, { "constant": true, "inputs": [], "name": "getShareholders", "outputs": [{ "name": "", "type": "address[]" }], "type": "function" }, { "constant": true, "inputs": [], "name": "getOwner", "outputs": [{ "name": "", "type": "address" }], "type": "function" }, { "constant": false, "inputs": [{ "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "count", "type": "uint256" }], "name": "transferShares", "outputs": [], "type": "function" }, { "constant": true, "inputs": [{ "name": "shareholder", "type": "address" }], "name": "getShareholding", "outputs": [{ "name": "", "type": "uint256" }], "type": "function" }, { "constant": false, "inputs": [{ "name": "newAuthorisedSettler", "type": "address" }], "name": "registerAuthorisedSettler", "outputs": [], "type": "function" }, { "inputs": [], "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "count", "type": "uint256" }], "name": "OnSharesIssued", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "from", "type": "address" }, { "indexed": false, "name": "to", "type": "address" }, { "indexed": false, "name": "count", "type": "uint256" }], "name": "OnSharesTransfered", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "newAuthorisedSettler", "type": "address" }], "name": "OnAuthorisedSettlerChanged", "type": "event" }];
   ShareIssuer.binary = "6060604090815260008054600160a060020a0319163317808255600160a060020a031681526002602052206064905560038054600181018083558281838015829011606a57818360005260206000209182019101606a91905b8082111560a757600081556001016058565b505050919090600052602060002090016000548154600160a060020a031916600160a060020a039190911617905550610346806100ab6000396000f35b509056606060405236156100615760e060020a600035046323409d48811461006357806324c253f31461008557806341ca641e14610098578063893d20e814610108578063bfc77beb1461011c578063ce43773014610144578063d783986d14610171575b005b610061600435600054600160a060020a03908116339091161461025857610002565b610193600154600160a060020a03165b90565b6101b06040805160208181018352600082528251600380548084028301840190955284825292939092918301828280156100fc57602002820191906000526020600020905b8154600160a060020a03168152600191909101906020018083116100dd575b50505050509050610095565b610193600054600160a060020a0316610095565b610061600435602435604435600154600160a060020a0390811633909116146102ae57610002565b600160a060020a036004351660009081526002602052604090205460408051918252519081900360200190f35b610061600435600054600160a060020a0390811633909116146101fa57610002565b60408051600160a060020a03929092168252519081900360200190f35b60405180806020018281038252838181518152602001915080519060200190602002808383829060006004602084601f0104600302600f01f1509050019250505060405180910390f35b6001805473ffffffffffffffffffffffffffffffffffffffff19168217905560408051600160a060020a038316815290517f98551c4cbfa475727f3c44b68fd8316aacc430f9ad88de63e2ed29c7c77674699181900360200190a150565b60008054600160a060020a0316815260026020908152604091829020805484019055815183815291517f8f73a9b0da9e3d91ff8005bc70d0cb658af561ed0c936f928fd3232afbc07a019281900390910190a150565b600160a060020a038316600090815260026020526040902054819010156102d457610002565b600160a060020a0383811660008181526002602090815260408083208054879003905593861680835291849020805486019055835192835282015280820183905290517f1a9d735777ef03c880675fec31b4fbd692593cc6eeb82274084a07bee3fb44829181900360600190a150505056";
 
-  if ("0x4abed15cdb6d13861a1552d098a98224755577de" != "") {
-    ShareIssuer.address = "0x4abed15cdb6d13861a1552d098a98224755577de";
+  if ("0xe19f02015e0227f8c202d7ec4b36352f6aea5e1c" != "") {
+    ShareIssuer.address = "0xe19f02015e0227f8c202d7ec4b36352f6aea5e1c";
 
     // Backward compatibility; Deprecated.
-    ShareIssuer.deployed_address = "0x4abed15cdb6d13861a1552d098a98224755577de";
+    ShareIssuer.deployed_address = "0xe19f02015e0227f8c202d7ec4b36352f6aea5e1c";
   }
 
   ShareIssuer.generated_with = "1.0.3";
@@ -5659,8 +5659,7 @@ if (typeof module != "undefined") {
   // There will only be one version of Pudding in the browser,
   // and we can use that.
   window.ShareIssuer = factory;
-}
-;
+};
 
 ;
 
@@ -5703,34 +5702,48 @@ app.service('shareHolderService', [ function() {
  this.tmpShareIssuers =[
    { name : "kaserFactory",  address : "", instance : undefined, 
      owner : { name : "Cheese Maker", address : "" },
-     shareHolders : [] },
-   { name : "relox",  address : "0x3e3067623f0a8919382924dd9a57eaff19e2d3e0", instance : undefined,
+     shareHolders : [],
+     authorisedSettler: "" },
+   { name : "relox",  address : "", instance : undefined,
      owner : { name : "Clock Maker", address : "" },
-     shareHolders : [] },
-   { name : "baguetteShop", address : "0x332e4376f2660ee168103b51a92b43c779a2cfdd", instance : undefined,
+     shareHolders : [],
+     authorisedSettler: "" },
+   { name : "baguetteShop", address : "", instance : undefined,
      owner : { name : "Cheese Maker", address : "" },
-     shareHolders : [] }
+     shareHolders : [],
+     authorisedSettler: "" }
  ];
 
    var init = function (shareIssuers) {
 	web3.eth.getAccounts(function (err, accs) {
 		shareIssuers[0].address = ShareIssuer.deployed().address;
 		
-                shareIssuers.forEach(function(shareIssuer) {
-                    shareIssuer.instance = ShareIssuer.at(shareIssuer.address);
+        shareIssuers.forEach(function(shareIssuer) {
+            shareIssuer.instance = ShareIssuer.at(shareIssuer.address);
 
-                    getShareHolderInfos(shareIssuer);
+	        getShareHolderInfos(shareIssuer);
 		    shareIssuer.instance.getOwner()
-			.then(function (address) {
-				shareIssuer.owner.address = address;
-			})
-			.catch(function (e) {
-				console.error(e);
-			});
+				.then(function (address) {
+					shareIssuer.owner.address = address;
+				})
+				.catch(function (e) {
+					console.error(e);
+				});
 
-                    console.log(shareIssuer);
+	        console.log(shareIssuer);
 
-                });
+	        shareIssuer.instance.getAuthorisedSettler()
+	        	.then(service.applyCallback(function (address) {
+	        			console.log("second " + address);
+	        			shareIssuer.authorisedSettler = address;
+	        		})
+	        	)
+	        	.catch(console.error);
+
+	    	listenToAuthorisedSettlerChanged(shareIssuer);
+
+        });
+
 	});
    }
 
@@ -5766,15 +5779,15 @@ function getShareHolderInfos(shareIssuerWrapper) {
 			shareIssuerWrapper.instance
 			.getShareholding(holderList[i])
 			.then(service.applyCallback(function (count) {
-console.log(count);
+				console.log(count);
 				receivedInfos.push(current);
 				shareIssuerWrapper.shareHolders.push({
 					"address": holderList[current],
 					"count": count.c[0]
 				});
-                               if(length == receivedInfos.length) {
-                                   service.shareIssuers = service.tmpShareIssuers;
-                               }
+               	if(length == receivedInfos.length) {
+                   service.shareIssuers = service.tmpShareIssuers;
+               	}
 			}))
 			.catch(function(e) { console.error(e); } );
 		}
@@ -5782,6 +5795,20 @@ console.log(count);
 	.catch(function(e) { console.error(e); } );
 }
   
+
+function listenToAuthorisedSettlerChanged(shareIssuer) {
+	shareIssuer.instance.OnAuthorisedSettlerChanged({})
+	    .watch(service.applyCallback(function (error, result) {
+	        console.log("OnAuthorisedSettlerChanged:");  
+	        if (error) {
+	            console.log(error);
+	      		alert("Error OnAuthorisedSettlerChanged \n" + e);
+	        }
+	        console.log(result);
+        	shareIssuer.authorisedSettler = result.args.newAuthorisedSettler;	
+        }));
+}
+
   init(this.tmpShareIssuers);
   
 }]);
@@ -5808,11 +5835,48 @@ console.log(count);
     };
 
     $scope.transferShares = function(shareIssuer, seller, buyer, count) {
-console.log(shareIssuer.instance, seller.address, buyer, count);
-       shareIssuer.instance.transferShares(seller.address, buyer, parseInt(count,10))
-                 .then(function(result) { console.log(result); })
-                 .catch(console.error);
+        console.log(shareIssuer.instance, seller.address, buyer, count);
+        shareIssuer.instance.transferShares(seller.address, buyer, parseInt(count, 10))
+                .then(function(result) { 
+                    console.log(result); 
+                })
+                .catch(function (e) {
+                    console.error(e);
+                });
     };
+
+} ]); 
+
+
+ app.controller('shareIssuerCtrl', [ '$scope', 'shareHolderService', function($scope , shareHolderService) {
+
+    $scope.newAuthorisedSettler = web3.eth.coinbase;
+ 
+    $scope.settlerAddress = "";
+    
+    shareHolderService.applyCallback = function(f) {
+        return function(error, result) { $scope.$apply( function() {
+             f(error, result);
+       } ) } ;
+    };
+
+    $scope.getShareIssuers = function() {
+         return  shareHolderService.shareIssuers;
+    };
+
+    $scope.updateAuthorisedSettler = function (shareIssuerWrapper, newAuthorisedSettler) {
+        console.log("new Address " + newAuthorisedSettler);
+        shareIssuerWrapper.instance.registerAuthorisedSettler(
+            newAuthorisedSettler,
+            {from: web3.eth.coinbase})
+            .then(function (result) {
+                console.log(result);
+            })
+            .catch(function (e) {
+                console.error(e);
+            });
+    };
+
 } ]); 
 ;
 
@@ -5827,4 +5891,4 @@ if (typeof web3 !== 'undefined') {
 }
 
 Pudding.setWeb3(window.web3);
-Pudding.load([MetaCoin, OrderBook, Owned, Settlement, ShareIssuer], window);
+Pudding.load([MetaCoin, OrderBook, PendingTradeList, Owned, ShareIssuer], window);

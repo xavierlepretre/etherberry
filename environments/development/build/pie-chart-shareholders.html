@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="./app.js"></script>
+</head>
+<body ng-controller="myController">
+    <div id="container">Placeholder for chart</div>
+    <script>
+	getShareHolderInfos(ShareIssuer.deployed(), 
+	function(result){
+		console.log(result);
+	}, 
+	function(error){
+                console.error(error);
+	});
+
+    	angular.module('myModule', [])
+    		.controller('myController', function ($scope) {
+				Highcharts.chart('container', {
+
+				                chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Shareholders'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Percentage',
+            colorByPoint: true,
+            data: [{
+                name: 'Alice',
+                y: 56.33}, {
+                name: 'Bond',
+                y: 24.03,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Chuck',
+                y: 10.38
+            }, {
+                name: 'Diane',
+                y: 4.77
+            }, {
+                name: 'Esther',
+                y: 4.49
+            }, ]
+        }]
+    });
+    		});
+    </script>
+</body>
+</html>
