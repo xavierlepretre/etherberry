@@ -7,12 +7,13 @@
     "orderbook.json" : "orderbook.json",
     "app.js": [
       "javascripts/app.js",
-      "javascripts/shareHolderMethods.js",
-      "javascripts/authorisedSettlerMethods.js"
+      "javascripts/angularApp.js",
+      "javascripts/shareHolderService.js",
+      "javascripts/authorisedSettlerMethods.js",
+      "javascripts/authorisedSettlerCtrl.js"
     ],
     "shareIssuerMethods.js": [
       "javascripts/app.js",
-      "javascripts/shareHolderMethods.js",
        "javascripts/shareIssuerMethods.js"
     ],
     "orderbook.js": [
