@@ -5637,11 +5637,11 @@ var factory = function factory(Pudding) {
   ShareIssuer.abi = [{ "constant": false, "inputs": [{ "name": "quantity", "type": "uint256" }], "name": "issueShares", "outputs": [], "type": "function" }, { "constant": true, "inputs": [], "name": "getAuthorisedSettler", "outputs": [{ "name": "", "type": "address" }], "type": "function" }, { "constant": true, "inputs": [], "name": "getShareholders", "outputs": [{ "name": "", "type": "address[]" }], "type": "function" }, { "constant": true, "inputs": [], "name": "getOwner", "outputs": [{ "name": "", "type": "address" }], "type": "function" }, { "constant": false, "inputs": [{ "name": "from", "type": "address" }, { "name": "to", "type": "address" }, { "name": "count", "type": "uint256" }], "name": "transferShares", "outputs": [], "type": "function" }, { "constant": true, "inputs": [{ "name": "shareholder", "type": "address" }], "name": "getShareholding", "outputs": [{ "name": "", "type": "uint256" }], "type": "function" }, { "constant": false, "inputs": [{ "name": "newAuthorisedSettler", "type": "address" }], "name": "registerAuthorisedSettler", "outputs": [], "type": "function" }, { "inputs": [], "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "count", "type": "uint256" }], "name": "OnSharesIssued", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "from", "type": "address" }, { "indexed": false, "name": "to", "type": "address" }, { "indexed": false, "name": "count", "type": "uint256" }], "name": "OnSharesTransfered", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "newAuthorisedSettler", "type": "address" }], "name": "OnAuthorisedSettlerChanged", "type": "event" }];
   ShareIssuer.binary = "6060604090815260008054600160a060020a0319163317808255600160a060020a031681526002602052206064905560038054600181018083558281838015829011606a57818360005260206000209182019101606a91905b8082111560a757600081556001016058565b505050919090600052602060002090016000548154600160a060020a031916600160a060020a039190911617905550610346806100ab6000396000f35b509056606060405236156100615760e060020a600035046323409d48811461006357806324c253f31461008557806341ca641e14610098578063893d20e814610108578063bfc77beb1461011c578063ce43773014610144578063d783986d14610171575b005b610061600435600054600160a060020a03908116339091161461025857610002565b610193600154600160a060020a03165b90565b6101b06040805160208181018352600082528251600380548084028301840190955284825292939092918301828280156100fc57602002820191906000526020600020905b8154600160a060020a03168152600191909101906020018083116100dd575b50505050509050610095565b610193600054600160a060020a0316610095565b610061600435602435604435600154600160a060020a0390811633909116146102ae57610002565b600160a060020a036004351660009081526002602052604090205460408051918252519081900360200190f35b610061600435600054600160a060020a0390811633909116146101fa57610002565b60408051600160a060020a03929092168252519081900360200190f35b60405180806020018281038252838181518152602001915080519060200190602002808383829060006004602084601f0104600302600f01f1509050019250505060405180910390f35b6001805473ffffffffffffffffffffffffffffffffffffffff19168217905560408051600160a060020a038316815290517f98551c4cbfa475727f3c44b68fd8316aacc430f9ad88de63e2ed29c7c77674699181900360200190a150565b60008054600160a060020a0316815260026020908152604091829020805484019055815183815291517f8f73a9b0da9e3d91ff8005bc70d0cb658af561ed0c936f928fd3232afbc07a019281900390910190a150565b600160a060020a038316600090815260026020526040902054819010156102d457610002565b600160a060020a0383811660008181526002602090815260408083208054879003905593861680835291849020805486019055835192835282015280820183905290517f1a9d735777ef03c880675fec31b4fbd692593cc6eeb82274084a07bee3fb44829181900360600190a150505056";
 
-  if ("0x5785426da731272f8f33741e0049bc340008e8c2" != "") {
-    ShareIssuer.address = "0x5785426da731272f8f33741e0049bc340008e8c2";
+  if ("0x4abed15cdb6d13861a1552d098a98224755577de" != "") {
+    ShareIssuer.address = "0x4abed15cdb6d13861a1552d098a98224755577de";
 
     // Backward compatibility; Deprecated.
-    ShareIssuer.deployed_address = "0x5785426da731272f8f33741e0049bc340008e8c2";
+    ShareIssuer.deployed_address = "0x4abed15cdb6d13861a1552d098a98224755577de";
   }
 
   ShareIssuer.generated_with = "1.0.3";
@@ -5659,7 +5659,8 @@ if (typeof module != "undefined") {
   // There will only be one version of Pudding in the browser,
   // and we can use that.
   window.ShareIssuer = factory;
-};
+}
+;
 
 ;
 
@@ -5668,40 +5669,6 @@ if (typeof module != "undefined") {
 var accounts;
 var account;
 var balance;
-
-function setStatus(message) {
-  var status = document.getElementById("status");
-  status.innerHTML = message;
-};
-
-function refreshBalance() {
-  var meta = MetaCoin.deployed();
-
-  meta.getBalance.call(account, {from: account}).then(function(value) {
-    var balance_element = document.getElementById("balance");
-    balance_element.innerHTML = value.valueOf();
-  }).catch(function(e) {
-    console.log(e);
-    setStatus("Error getting balance; see log.");
-  });
-};
-
-function sendCoin() {
-  var meta = MetaCoin.deployed();
-
-  var amount = parseInt(document.getElementById("amount").value);
-  var receiver = document.getElementById("receiver").value;
-
-  setStatus("Initiating transaction... (please wait)");
-
-  meta.sendCoin(receiver, amount, {from: account}).then(function() {
-    setStatus("Transaction complete!");
-    refreshBalance();
-  }).catch(function(e) {
-    console.log(e);
-    setStatus("Error sending coin; see log.");
-  });
-};
 
 window.onload = function() {
   web3.eth.getAccounts(function(err, accs) {
@@ -5718,73 +5685,54 @@ window.onload = function() {
     accounts = accs;
     account = accounts[0];
 
-    refreshBalance();
   });
 }
 
 
-// Deployed share issuers
-var shareIssuerAddresses = {
-	// This one is updated with the default deployed
-	kaserFactory: "",
-	// These need to be updated by hand unfortunately
-	relox: "0x3e3067623f0a8919382924dd9a57eaff19e2d3e0",
-	baguetteShop: "0x332e4376f2660ee168103b51a92b43c779a2cfdd"
-}
+var app = angular.module('angularApp', []);
 
-var shareIssuers = {
-	kaserFactory: undefined,
-	relox: undefined,
-	baguetteShop: undefined
-}
 
-// Share Issue Owners
-var shareIssuerOwners = {
-	"kaserFactory": {
-		"name": "Cheese Maker",
-		"address": "" // Populated on load
-	},
-	"relox": {
-		"name": "Clock Maker",
-		"address": "" // Populated on load
-	},
-	"baguetteShop": {
-		"name": "Bread Maker",
-		"address": "" // Populated on load
-	}
-}
 
-window.onload = function () {
+app.service('shareHolderService', [ function() {
+
+ var service = this;
+
+ this.applyCallback = function(f) { return f; };
+ this.shareIssuers = [];
+
+ this.tmpShareIssuers =[
+   { name : "kaserFactory",  address : "", instance : undefined, 
+     owner : { name : "Cheese Maker", address : "" },
+     shareHolders : [] },
+   { name : "relox",  address : "0x3e3067623f0a8919382924dd9a57eaff19e2d3e0", instance : undefined,
+     owner : { name : "Clock Maker", address : "" },
+     shareHolders : [] },
+   { name : "baguetteShop", address : "0x332e4376f2660ee168103b51a92b43c779a2cfdd", instance : undefined,
+     owner : { name : "Cheese Maker", address : "" },
+     shareHolders : [] }
+ ];
+
+   var init = function (shareIssuers) {
 	web3.eth.getAccounts(function (err, accs) {
-		shareIssuerAddresses.kaserFactory = ShareIssuer.deployed().address;
+		shareIssuers[0].address = ShareIssuer.deployed().address;
 		
-		shareIssuers.kaserFactory = ShareIssuer.deployed();
-		shareIssuers.relox = ShareIssuer.at(shareIssuerAddresses.relox);
-		shareIssuers.baguetteShop = ShareIssuer.at(shareIssuerAddresses.baguetteShop);
+                shareIssuers.forEach(function(shareIssuer) {
+                    shareIssuer.instance = ShareIssuer.at(shareIssuer.address);
 
-		shareIssuers.kaserFactory.getOwner()
+                    getShareHolderInfos(shareIssuer);
+		    shareIssuer.instance.getOwner()
 			.then(function (address) {
-				shareIssuerOwners.kaserFactory.address = address;		
+				shareIssuer.owner.address = address;
 			})
 			.catch(function (e) {
 				console.error(e);
 			});
-		shareIssuers.relox.getOwner()
-			.then(function (address) {
-				shareIssuerOwners.relox.address = address;		
-			})
-			.catch(function (e) {
-				console.error(e);
-			});
-		shareIssuers.baguetteShop.getOwner()
-			.then(function (address) {
-				shareIssuerOwners.baguetteShop.address = address;		
-			})
-			.catch(function (e) {
-				console.error(e);
-			});
+
+                    console.log(shareIssuer);
+
+                });
 	});
-}
+   }
 
 function deployNewShareIssuerStraight() {
 	return deployNewShareIssuer(
@@ -5806,45 +5754,66 @@ function deployNewShareIssuer(from, resultFunction, errorFunction) {
 	.catch(errorFunction);
 }
 
-function getShareHolderInfosOfBase() {
-	getShareHolderInfos(
-		ShareIssuer.deployed(),
-		function (result) {
-			console.log(result);
-		},
-		function (e) {
-			console.error(e);
-		})
-}
-
-function getShareHolderInfos(shareIssuer, resultFunction, errorFunction) {
-	shareIssuer
+function getShareHolderInfos(shareIssuerWrapper) {
+	shareIssuerWrapper.instance
 	.getShareholders()
 	.then(function (holderList) {
 		// Result is in the form [ "0x987543534...", ... ]
-		var shareHolderInfos = [];
 		var length = holderList.length;
 		var receivedInfos = [];
 		for (var i = 0; i < length; i++) {
 			var current = i;
-			shareIssuer
+			shareIssuerWrapper.instance
 			.getShareholding(holderList[i])
-			.then(function (count) {
+			.then(service.applyCallback(function (count) {
+console.log(count);
 				receivedInfos.push(current);
-				shareHolderInfos.push({
+				shareIssuerWrapper.shareHolders.push({
 					"address": holderList[current],
 					"count": count.c[0]
 				});
-				if (receivedInfos.length == length) {
-					resultFunction.call(this, shareHolderInfos);
-				}
-			})
-			.catch(errorFunction);
+                               if(length == receivedInfos.length) {
+                                   service.shareIssuers = service.tmpShareIssuers;
+                               }
+			}))
+			.catch(function(e) { console.error(e); } );
 		}
 	})
-	.catch(errorFunction);
+	.catch(function(e) { console.error(e); } );
 }
+  
+  init(this.tmpShareIssuers);
+  
+}]);
 
+
+
+
+
+
+ app.controller('authorizedSettlerCtrl', [ '$scope', 'shareHolderService', function($scope , shareHolderService) {
+
+    $scope.buyer = web3.eth.coinbase;
+ 
+    $scope.settlerAddress = "";
+    
+    shareHolderService.applyCallback = function(f) {
+        return function(count) { $scope.$apply( function() {
+             f(count);
+       } ) } ;
+    };
+
+    $scope.getShareIssuers = function() {
+         return  shareHolderService.shareIssuers;
+    };
+
+    $scope.transferShares = function(shareIssuer, seller, buyer, count) {
+console.log(shareIssuer.instance, seller.address, buyer, count);
+       shareIssuer.instance.transferShares(seller.address, buyer, parseInt(count,10))
+                 .then(function(result) { console.log(result); })
+                 .catch(console.error);
+    };
+} ]); 
 ;
 
 // Added by Truffle bootstrap.

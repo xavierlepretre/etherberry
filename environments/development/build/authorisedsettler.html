@@ -3,56 +3,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
   <title>Authorised Settler Page</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <link href="./app.css" rel='stylesheet' type='text/css'>
   <script src="./app.js"></script>
 </head>
-<body>
+<body ng-app="angularApp" ng-controller="authorizedSettlerCtrl">
   <h1>Transfer of Share Ownership</h1>
-  <h2>I am an Authorised Settler</h2>
-  
-  <table>
+  <h2>I am an Authorised Settler </h2>
+<form>
+  <table ng-init="console.log(shareIssuers);">
     <thead>
       <tr>
         <th>Share Issuer</th>
-        <th>Shareholder</th>
-        <th>Holding</th>
-        <th>Buyer</th>
-        <th>Count</th>
+        <th colspan="3">Seller (Shareholder)</th>
       </tr>
     </thead>
-    <tbody id="share-issuers">
-      <tr class="share-issuer" data-issuer-address="0x2534545645">
-        <th class="share-issuer-name">Relox</th>
+    <tbody ng-repeat="shareIssuer in getShareIssuers()">
+      <tr class="share-issuer" data-issuer-address="0x2534545645" ng-repeat="shareHolder in shareIssuer.shareHolders">
+        <th class="share-issuer-name">{{shareIssuer.name}}</th>
         <td class="shareholders">
-          <form>
-            <div class="shareholder" data-shareholder-id="0x23434534">
-              <input id="shareholder-radio-0" type="radio" 
-                name="data-shareholder-id" value="0x23434534"/>
-              <label for="shareholder-radio-0">0x23434534</label>
-            </div>
-            <div class="shareholder" data-shareholder-id="0xabcdef">
-              <input id="shareholder-radio-1" type="radio" 
-                name="data-shareholder-id" value="0xabcdef" />
-              <label for="shareholder-radio-1">0xabcdef</label>
-            </div>
-          </form>
+           <input type="radio" name="selected"  ng-model="selectedShareHolder" ng-value="shareHolder"/>
         </td>
-        <td class="shareholdings">
-          <div class="shareholding" data-shareholder-id="0x23434534">90</div>
-          <div class="shareholding" data-shareholder-id="0xabcdef">10</div>
+        <td>
+           <label for="shareholder-radio-{{$index}}">{{shareHolder.address}}</label>
         </td>
-        <td class="buyer">
-          <input type="text" name="buyer" placeholder="0x4327289347298"/>
-        </td>
-        <td class="count">
-          <input type="number" name="count" />
-          <button>Transfer</button>
+        <td>
+           {{shareHolder.count}}
+      <button ng-click="transferShares(shareIssuer, shareHolder, buyer, count)">Transfer</button>
+
         </td>
       </tr>
     </tbody>
   </table>
-
+  <br/>
+  <div>
+      <label>Buyer</label>
+      <input type="text" name="buyer" placeholder="0x4327289347298" ng-model="buyer"/>
+   </div>
+   <div>
+      <label>Count</label>
+      <input type="number" name="count" ng-model="count" />
+   </div>
+      <button ng-click="transferShares(selectedShareHolder, buyer, count)">Transfer</button>
+   </div>
+</form>
 </body>
 </html>
