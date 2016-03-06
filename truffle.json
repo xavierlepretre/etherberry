@@ -3,14 +3,15 @@
     "index.html": "index.html",
     "authorisedsettler.html": "authorisedsettler.html",
     "share-issuer.html" : "share-issuer.html",
-    "orderbook-html": "orderbook.html",
-    "orderbook.json" : "orderbook.json",
+    "pie-chart-shareholders.html": "pie-chart-shareholders.html",
+    "orderbook.html": "orderbook.html",
     "app.js": [
       "javascripts/app.js",
       "javascripts/angularApp.js",
       "javascripts/shareHolderService.js",
       "javascripts/authorisedSettlerMethods.js",
-      "javascripts/authorisedSettlerCtrl.js"
+      "javascripts/authorisedSettlerCtrl.js",
+      "javascripts/shareIssuerCtrl.js"
     ],
     "shareIssuerMethods.js": [
       "javascripts/app.js",
@@ -18,7 +19,12 @@
     ],
     "orderbook.js": [
       "javascripts/mainApp.js",
+      "javascripts/orderbookMethods.js",
       "javascripts/orderbookCtrl.js"
+    ],
+    "tradelist.js": [
+      "javascripts/tradeListMethods.js",
+      "javascripts/tradeListControl.js"
     ],
     "app.css": [
       "stylesheets/app.css",
@@ -27,7 +33,7 @@
     "images/": "images/"
   },
   "deploy": [
-    "ShareIssuer"
+    "ShareIssuer", "OrderBook", "PendingTradeList"
   ],
   "rpc": {
     "host": "localhost",

@@ -1,7 +1,7 @@
 import "Owned";
 import "ShareIssuer";
 
-contract Settlement is Owned {
+contract PendingTradeList is Owned {
 
 	struct Trade {
 		uint256 id;
@@ -16,6 +16,7 @@ contract Settlement is Owned {
 	uint256[] tradeIds;
 	uint256 latestTradeId;
 
+	event OnTradeRegistered(uint256 id, uint256 index, address shareIssuer, uint256 price, uint256 quantity, address from, address to);
 	event OnTradeRemoved(uint256 tradeId);
 
 	modifier fromOwner() {
@@ -32,8 +33,24 @@ contract Settlement is Owned {
         _
     }
 
-    function Settlement() {
+    function PendingTradeList() {
     	latestTradeId = 0;
+    }
+
+    function getTradeIds() constant
+    	returns (uint256[]) {
+		return tradeIds;
+    }
+
+    function getTrade(uint256 id) constant
+    	tradeIdExists(id)
+    	returns(address, uint256, uint256, address, address) {
+    	return (
+    		trades[id].shareIssuer,
+    		trades[id].price,
+    		trades[id].quantity,
+    		trades[id].from,
+    		trades[id].to);
     }
 
 	function registerTrade(
@@ -51,6 +68,14 @@ contract Settlement is Owned {
 		trades[latestTradeId].from = from;
 		trades[latestTradeId].to = to;
 		tradeIds.push(latestTradeId);
+		OnTradeRegistered(
+			latestTradeId,
+			trades[latestTradeId].index,
+			shareIssuer,
+			price,
+			quantity,
+			from,
+			to);
 	}
 
 	function confirmPayment(address from, address to, uint256 totalTransfered) 
