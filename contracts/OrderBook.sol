@@ -33,6 +33,23 @@ contract OrderBook {
 		latestOrderId = 0;
 	}
 
+	function getOrderIds() constant 
+		returns (uint256[] ){
+		return orderIds;
+	}
+
+	function getOrder(uint256 orderId) constant
+		orderIdExists(orderId)
+		returns (uint256, address, uint256, uint256, bool, address) {
+		return (
+			orders[orderId].index,
+			orders[orderId].shareIssuer,
+			orders[orderId].price,
+			orders[orderId].quantity,
+			orders[orderId].isBuy,
+			orders[orderId].from);
+	}
+
  	function addOrder(address shareIssuer, uint256 price, uint256 quantity, bool isBuy) 
  		returns (uint256) { // Returns order id
 		latestOrderId++;

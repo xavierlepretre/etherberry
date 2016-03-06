@@ -2,20 +2,32 @@
 
     $scope.orderbook = {};
 
-    $http({
-       method: 'GET',
-       url: './orderbook.json',
-//	headers: {
-//   	'Content-Type': undefined
-// 	},
-//       data: { share: 'baguetteShop' }
-    }).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-         console.log(response);
-         $scope.orderbook = response.data;
-    }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    });
+    getOrderInfos(
+        shareIssuers.baguetteShop.address,
+        function(result) {
+            console.info(result);
+            $scope.orderbook = result;
+        },
+        function(e) {
+            console.error(e);
+        }
+    );
+
+    $scope.takeOrder = function(orderbook, order) {
+        PendingTradeList
+            .deployed()
+            .registerTrade(
+                orderbook.shareIssuer,
+                order.price,
+                order.quantity,
+                order.isBuy ? web3.eth.coinbase : order.from,
+                order.isBuy ? order.from : web3.eth.coinbase)
+            .then(function (result) {
+                console.info(result);
+            })
+            .catch(function (e) {
+                console.error(e);
+            });
+    };
+
 } ]); 

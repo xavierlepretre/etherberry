@@ -2,50 +2,12 @@
 <html>
 <head>
 <title>Order Book</title>
-<link rel="stylesheet"  type="text/css" href="stylesheets/book.css">
+<link rel="stylesheet"  type="text/css" href="./app.css">
 </head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="app.js"></script>
 <script src="orderbook.js"></script>
-<script>
-var test = {
-	"name" : "baguetteShop",
-	"referenceprice" : "95.00",
-	"selllist" :  [
-       	    {
-          	"price" : "100.00",
-          	"quantity" : "100"
-       	    },
-       	    {
-          	"price" : "110.00",
-          	"quantity" : "200"
-       	    },
-       	    {
-                "price" : "120.00",
-                "quantity" : "300"
-       	    },
-            {
-          	"price" : "130.00",
-          	"quantity" : "100"
-       	    }
-       ],
-	"buylist" : [
-       	    {
-                "price" : "70.00",
-                "quantity" : 300
-       	    },
-       	    {
-          	"price" : "80.00",
-          	"quantity" : "200"
-       	    },
-	    {
-          	"price" : "90.00",
-          	"quantity" : "200"
-       	    }
-       ],
-	"timestamp" : "09:10:35"
-
-}
-</script>
+<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
 <body>
 
 <div ng-app="myApp" ng-controller='orderbookCtrl'>
@@ -70,8 +32,8 @@ var test = {
 <td bgcolor="lightgrey"></td>
 </tr>
 
-<tr ng-repeat="x in orderbook.buylist">
-    <td><button bgcolor="lightgrey">Take</button></td>
+<tr class="order buy" ng-repeat="x in orderbook.buyList">
+    <td><button class="take" bgcolor="lightgrey" ng-click="takeOrder(orderbook, x)">Take</button></td>
     <td>{{x.quantity}}</td>
     <td>{{x.price}}</td>
     <td></td>
@@ -79,13 +41,13 @@ var test = {
     <td></td>
 </tr>
 
-<tr ng-repeat="x in orderbook.selllist">
-<td></td>
+<tr class="order sell" ng-repeat="x in orderbook.sellList">
+    <td></td>
     <td></td>
     <td></td>
     <td>{{x.price}}</td>
     <td>{{x.quantity}}</td>
-<td><button bgcolor="lightgrey">Take</button></td>
+    <td><button class="take" bgcolor="lightgrey" ng-click="takeOrder(orderbook, x)">Take</button></td>
 </tr>
 
 </table>
