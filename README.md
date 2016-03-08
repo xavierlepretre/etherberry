@@ -160,4 +160,6 @@ shareIssuer.OnAuthorisedSettlerChanged({})
 
 #### Transfer shares. 
 
+You need to cal the method.
+
 
